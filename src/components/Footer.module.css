@@ -1,8 +1,14 @@
 .footer {
-  height: 250px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #edf3f6;
+  background-image: linear-gradient(
+    200deg,
+    #00509d 0,
+    #003f88 50%,
+    #00296b 100%
+  );
+  color: white;
 }

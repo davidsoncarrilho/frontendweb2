@@ -6,6 +6,7 @@ import { useAuthentication } from "../../hooks/useAuthentication";
 const Register = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
+  const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -39,11 +40,11 @@ const Register = () => {
 
   return (
     <div className={styles.register}>
-      <h1>Cadastre-se para postar</h1>
-      <p>Crie seu usuário e compartilhe suas histórias</p>
+      <h1>Cadastre-se para matrícula</h1>
+      <p></p>
       <form onSubmit={handleSubmit}>
         <label>
-          <span>Nome:</span>
+          <span>Nome do responsável:</span>
           <input
             type="text"
             name="displayName"
@@ -62,6 +63,17 @@ const Register = () => {
             placeholder="E-mail do usuário"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label>
+          <span>CPF:</span>
+          <input
+            type="Cpf"
+            name="Cpf"
+            required
+            placeholder="CPF do responsável"
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
           />
         </label>
         <label>
