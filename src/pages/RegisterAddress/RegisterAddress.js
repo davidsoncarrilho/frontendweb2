@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useAuthentication } from "../../hooks/useAuthentication";
 import styles from "./RegisterAddress.module.css";
 
 const RegisterAddress = () => {
@@ -13,8 +12,6 @@ const RegisterAddress = () => {
   const [error, setError] = useState("");
   const [nomeCrianca, setNomeCrianca] = useState("");
   const [rg, setRg] = useState("");
-
-  const { loading } = useAuthentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
