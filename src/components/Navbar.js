@@ -1,14 +1,20 @@
-import { NavLink } from "react-router-dom";
-
-import { useAuthentication } from "../hooks/useAuthentication";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { useAuthValue } from "../context/AuthContext";
 
 import styles from "./Navbar.module.css";
+import { API } from "../service/service";
 
 const Navbar = () => {
-  const { user } = useAuthValue();
-  const { logout } = useAuthentication();
+  const { user, setUser } = useAuthValue();
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    API.defaults.headers.common["Authorization"] = "";
+    localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <nav className={styles.navbar}>
