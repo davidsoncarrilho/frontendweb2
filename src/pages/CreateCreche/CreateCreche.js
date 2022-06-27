@@ -1,7 +1,6 @@
 import styles from "./CreateCreche.module.css";
 
-import { useState, useEffect } from "react";
-import { useAuthentication } from "../../hooks/useAuthentication";
+import { useState } from "react";
 
 const CreateCreche = () => {
   const [nomeCreche, setNomeCreche] = useState("");
@@ -14,17 +13,9 @@ const CreateCreche = () => {
   const [estado, setEstado] = useState("");
   const [error, setError] = useState("");
 
-  const { createCreche, error: authError, loading } = useAuthentication();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
   };
-
-  useEffect(() => {
-    if (authError) {
-      setError(authError);
-    }
-  }, [authError]);
 
   return (
     <div className={styles.creche}>
@@ -124,11 +115,7 @@ const CreateCreche = () => {
           />
         </label>
         <button className="btn">Cadastrar</button>
-        {loading && (
-          <button className="btn" disabled>
-            Aguarde...
-          </button>
-        )}
+
         {error && <p className="error">{error}</p>}
       </form>
     </div>
