@@ -1,32 +1,49 @@
 import styles from "./Login.module.css";
 import { useState, useEffect } from "react";
-import { useAuthentication } from "../../hooks/useAuthentication";
+import { API } from "../../service/service";
+import { useNavigate } from "react-router-dom";
+import { useAuthValue } from "../../context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsloading] = useState(false);
 
-  const { login, error: authError, loading } = useAuthentication();
+  const { setUser } = useAuthValue();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setError("");
+    try {
+      const [email, password] = e.target;
+      setError("");
 
-    const user = {
-      email,
-      password,
-    };
-    const res = await login(user);
-    console.log(res);
-  };
+      const user = {
+        email: email.value,
+        senha: password.value,
+      };
 
-  useEffect(() => {
-    if (authError) {
-      setError(authError);
+      const {
+        data: { token },
+      } = await API.post("/login", user);
+
+      setUser(user);
+
+      API.defaults.headers.common["Authorization"] = token;
+      localStorage.setItem("token", token);
+
+      localStorage.setItem("user", JSON.stringify(user));
+
+      if (token) {
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      setError("usuario ou senha estão incorretos");
     }
-  }, [authError]);
+  };
 
   return (
     <div className={styles.login}>
@@ -36,7 +53,6 @@ const Login = () => {
         <label>
           <span>E-mail:</span>
           <input
-            type="email"
             name="email"
             required
             placeholder="E-mail do usuário"
@@ -55,8 +71,8 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        {!loading && <button className="btn">Entrar</button>}
-        {loading && (
+        {!isLoading && <button className="btn">Entrar</button>}
+        {isLoading && (
           <button className="btn" disabled>
             Aguarde...
           </button>
