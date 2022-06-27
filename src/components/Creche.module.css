@@ -1,7 +1,35 @@
 .creche_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  height: 150px;
+
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: #00509d;
+  transition: 0.4s;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
 }
 
 .creche_container h3 {
   margin-bottom: 0.2em;
+}
+
+button {
+  border: none;
+  background-color: white;
+  margin: 5px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-weight: normal;
+}
+
+.creche_container:hover {
+  background-color: #f8f8f8;
+  cursor: pointer;
 }
