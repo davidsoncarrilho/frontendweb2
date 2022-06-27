@@ -1,11 +1,10 @@
-.register {
+.creche {
   text-align: center;
-  color: #003f88;
   padding-top: 2em;
   box-shadow: rgba(42, 8, 115, 0.15) 0px 0px 0px 0px;
 }
 
-.register p {
+.creche p {
   color: #aaa;
   padding-top: 0.5em;
 }

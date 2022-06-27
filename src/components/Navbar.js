@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <NavLink to="/">
-        Creche<span> Evolua</span>
+        <span> Evolua</span>
       </NavLink>
       <ul className={styles.links_list}>
         <li>
@@ -39,7 +39,7 @@ const Navbar = () => {
                 to="/register"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                Registro
+                Matrícula
               </NavLink>
             </li>
           </>
@@ -51,7 +51,7 @@ const Navbar = () => {
                 to="/posts/create"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                Novo post
+                Nova Creche
               </NavLink>
             </li>
             <li>
@@ -59,7 +59,7 @@ const Navbar = () => {
                 to="/dashboard"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                Dashboard
+                Creches
               </NavLink>
             </li>
           </>

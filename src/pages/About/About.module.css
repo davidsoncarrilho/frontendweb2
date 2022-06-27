@@ -5,9 +5,19 @@
   align-items: center;
 }
 
+.about h2{
+  padding-top: 2em;
+}
 .about p {
-  color: #aaa;
+  color: black;
   margin-bottom: 2em;
+  width: 80%;
+}
+
+.about img {
+  height: 15em;
+  width: 20em;
+  display: inline-block;
 }
 
 .about a {
